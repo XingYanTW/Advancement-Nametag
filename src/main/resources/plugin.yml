@@ -1,0 +1,10 @@
+name: AdvancementNametag
+version: '${project.version}'
+main: me.xingyan.advancementnametag.AdvancementNametag
+api-version: 1.20
+author: xy
+folia-supported: true
+commands:
+  tags:
+    description: open a gui to set the nametag
+    usage: /<command>

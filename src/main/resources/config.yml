@@ -1,0 +1,7 @@
+command:
+  reset: "tab player %player% abovename"
+  set: "tab player %player% abovename &c[%tag%&c]"
+message:
+  reset: "&cYour nametag has been reset."
+  set: "&aYour nametag has been set to %tag%."
+  not-player: "&cYou must be a player to use this command."
