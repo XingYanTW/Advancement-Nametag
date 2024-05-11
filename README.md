@@ -6,6 +6,7 @@ A simple plugin that allows players to select name tags through advancement
 
 ## Tested Version
 - **Folia:** 1.20.2
+- **Paper:** 1.20.1
 
 ## Installation
 
