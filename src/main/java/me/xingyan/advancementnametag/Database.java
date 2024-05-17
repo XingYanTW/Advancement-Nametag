@@ -18,7 +18,7 @@ public class Database {
                             UUID TEXT PRIMARY KEY,
                             Username TEXT NOT NULL,
                             Nametag TEXT,
-                            Raw TEXT)
+                            Colored TEXT)
                     """);
         }
     }
@@ -46,7 +46,7 @@ public class Database {
         }
 
         //add player to database
-        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO Players (UUID, Username, Nametag, Raw) VALUES (?, ?, ?, ?)")) {
+        try (PreparedStatement statement = connection.prepareStatement("INSERT INTO Players (UUID, Username, Nametag, Colored) VALUES (?, ?, ?, ?)")) {
             statement.setString(1, uuid);
             statement.setString(2, Bukkit.getOfflinePlayer(UUID.fromString(uuid)).getName());
             statement.setString(3, null);
@@ -69,11 +69,11 @@ public class Database {
         return null;
     }
 
-    //set player's nametag and raw
-    public void setNametag(String uuid, String nametag, String raw) throws SQLException {
-        try (PreparedStatement statement = connection.prepareStatement("UPDATE Players SET Nametag = ?, Raw = ? WHERE UUID = ?")) {
+    //set player's nametag and colored
+    public void setNametag(String uuid, String nametag, String colored) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("UPDATE Players SET Nametag = ?, Colored = ? WHERE UUID = ?")) {
             statement.setString(1, nametag);
-            statement.setString(2, raw);
+            statement.setString(2, colored);
             statement.setString(3, uuid);
             statement.executeUpdate();
         }
