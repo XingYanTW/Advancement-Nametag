@@ -1,10 +1,16 @@
 package me.xingyan.advancementnametag;
 
+import me.xingyan.advancementnametag.Listeners.onJoin;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.sql.SQLException;
 
 public final class AdvancementNametag extends JavaPlugin {
 
     public static AdvancementNametag plugin;
+
+    private Database database;
 
     @Override
     public void onEnable() {
@@ -18,12 +24,41 @@ public final class AdvancementNametag extends JavaPlugin {
 
         //register event
         this.getServer().getPluginManager().registerEvents(new guiNametag(), this);
+        this.getServer().getPluginManager().registerEvents(new onJoin(), this);
+
+        try{
+
+            if(!getDataFolder().exists()){
+                getDataFolder().mkdirs();
+            }
+
+            database = new Database( getDataFolder().getAbsolutePath() + "/players.db");
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Faild to Connect to Database");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        try {
+            database.closeConneciton();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    //get database
+    public Database getDatabase() {
+        return database;
+    }
+
+
+
+
 
 
 
