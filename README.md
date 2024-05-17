@@ -16,13 +16,14 @@ A simple plugin that allows players to select name tags through advancement
 
 ## Usage
 
-- `/tags`: Open a gui to pick a name tag linked to a specific advancement.
+- `/tags`: Open a gui to pick a specific advancement tag.
 
-## Todo List:
-- GUI Decoration
+## PlaceholderAPI
 
-⚠️ Custom advancement not tested
+```
+%advancementnametag_tag% - Get the name tag of the player.
+%advancementnametag_colored% - Get the colored name tag of the player.
+%advancementnametag_hastag% - Check if the player has a name tag.
+```
 
-⚠️ This plugins used command to change player's nametag! No plugin specified!
-
-(BTW Default configuration commands come from plugins [TAB](https://github.com/NEZNAMY/TAB))
+⚠️ Custom advancement may not work properly.
