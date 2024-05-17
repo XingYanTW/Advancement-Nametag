@@ -30,6 +30,8 @@ public class Expansion extends PlaceholderExpansion {
     public String onRequest(OfflinePlayer player, @NotNull String params) {
         if (params.equalsIgnoreCase("tag")) {
             try {
+                if(database.getNametag(player.getUniqueId().toString()) == null)
+                    return "";
                 return database.getNametag(player.getUniqueId().toString());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -37,6 +39,8 @@ public class Expansion extends PlaceholderExpansion {
         }
         if (params.equalsIgnoreCase("colored")) {
             try {
+                if(database.getColored(player.getUniqueId().toString()) == null)
+                    return "";
                 return database.getColored(player.getUniqueId().toString());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
