@@ -21,6 +21,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +34,8 @@ public class guiNametag implements Listener {
     FileConfiguration config = plugin.getConfig();
 
     private static final boolean isFolia = Bukkit.getVersion().contains("Folia");
+
+    Database database = plugin.getDatabase();
 
     public static Inventory inv;
     public static Inventory inv2;
@@ -184,7 +187,7 @@ public class guiNametag implements Listener {
 
     // Cancel dragging in our inventory
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
+    public void onInventoryClick(InventoryClickEvent e) throws SQLException {
         if (e.getInventory().equals(inv)) {
             e.setCancelled(true);
         }
@@ -299,6 +302,8 @@ public class guiNametag implements Listener {
             e.getWhoClicked().closeInventory();
             //add sound effect when click
             e.getWhoClicked().playSound(Sound.sound(org.bukkit.Sound.UI_BUTTON_CLICK, Sound.Source.PLAYER, 1f, 1f));
+
+            plugin.getDatabase().setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), plain, legacy);
 
         }
 
