@@ -303,7 +303,7 @@ public class guiNametag implements Listener {
             //add sound effect when click
             e.getWhoClicked().playSound(Sound.sound(org.bukkit.Sound.UI_BUTTON_CLICK, Sound.Source.PLAYER, 1f, 1f));
 
-            plugin.getDatabase().setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), plain, legacy);
+            plugin.getDatabase().setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), plain, ChatColor.translateAlternateColorCodes('&', legacy));
 
         }
 

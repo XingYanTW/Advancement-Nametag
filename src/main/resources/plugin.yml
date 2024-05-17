@@ -4,6 +4,7 @@ main: me.xingyan.advancementnametag.AdvancementNametag
 api-version: 1.20
 author: xy
 folia-supported: true
+softdepend: [PlaceholderAPI]
 commands:
   tags:
     description: open a gui to set the nametag
