@@ -69,6 +69,19 @@ public class Database {
         return null;
     }
 
+    //get player's colored
+    public String getColored(String uuid) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT Colored FROM Players WHERE UUID = ?")) {
+            statement.setString(1, uuid);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("Colored");
+                }
+            }
+        }
+        return null;
+    }
+
     //set player's nametag and colored
     public void setNametag(String uuid, String nametag, String colored) throws SQLException {
         try (PreparedStatement statement = connection.prepareStatement("UPDATE Players SET Nametag = ?, Colored = ? WHERE UUID = ?")) {

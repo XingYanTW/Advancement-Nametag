@@ -39,6 +39,10 @@ public final class AdvancementNametag extends JavaPlugin {
             System.out.println("Faild to Connect to Database");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+        if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new Expansion().register();
+        }
     }
 
     @Override
