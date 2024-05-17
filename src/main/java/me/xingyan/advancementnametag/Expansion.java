@@ -46,6 +46,13 @@ public class Expansion extends PlaceholderExpansion {
                 throw new RuntimeException(e);
             }
         }
+        if (params.equalsIgnoreCase("hasTag")) {
+            try {
+                return database.getNametag(player.getUniqueId().toString()) != null ? "true" : "false";
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return null; //
     }
 

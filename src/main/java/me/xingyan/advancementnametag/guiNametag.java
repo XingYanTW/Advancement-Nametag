@@ -202,7 +202,7 @@ public class guiNametag implements Listener {
             e.getWhoClicked().closeInventory();
             //add sound effect when click
             e.getWhoClicked().playSound(Sound.sound(org.bukkit.Sound.UI_BUTTON_CLICK, Sound.Source.PLAYER, 1f, 1f));
-            plugin.getDatabase().setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), "", "");
+            plugin.getDatabase().setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), null, null);
             return;
         }
 
