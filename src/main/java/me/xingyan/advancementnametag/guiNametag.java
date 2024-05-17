@@ -198,21 +198,11 @@ public class guiNametag implements Listener {
 
         //click reset and process console command
         if(e.getCurrentItem() != null && e.getCurrentItem().getType() == Material.BARRIER) {
-            String command = config.getString("command.reset");
-            assert command != null;
-            command = command.replace("%player%", e.getWhoClicked().getName());
-            String finalCommand = command;
-            if(isFolia){
-                Bukkit.getGlobalRegionScheduler().run(plugin, t -> {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCommand);
-                });
-            } else {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), finalCommand);
-            }
             e.getWhoClicked().sendMessage(ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(config.getString("message.reset"))));
             e.getWhoClicked().closeInventory();
             //add sound effect when click
             e.getWhoClicked().playSound(Sound.sound(org.bukkit.Sound.UI_BUTTON_CLICK, Sound.Source.PLAYER, 1f, 1f));
+            database.setNametag(String.valueOf(e.getWhoClicked().getUniqueId()), "", "");
             return;
         }
 
